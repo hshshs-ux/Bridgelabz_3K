@@ -1,501 +1,353 @@
-////****************************Part 1: Constructors Practice**********************************
-//
-//
-////1. Book Class with Default and Parameterized Constructors
-//static class Book {
-//    String title;
-//    String author;
-//    double price;
-//    Book() {
-//        title = "Unknown";
-//        author = "Unknown";
-//        price = 0.0;
-//    }
-//    Book(String title, String author, double price) {
-//        this.title = title;
-//        this.author = author;
-//        this.price = price;
-//    }
-//
-//    void display() {
-//        System.out.println("Title: " + title + ", Author: " + author + ", Price: " + price);
-//    }
-//
-//    public static void main(String[] args) {
-//        Book b1 = new Book(); // default
-//        Book b2 = new Book("Java Programming", "James Gosling", 599.99); // parameterized
-//        b1.display();
-//        b2.display();
-//    }
-//}
-//
-//
-//
-////2. Crcl Class with Constructor Chaining
-//class Crcl {
-//    double radius;
-//    Crcl() {
-//        this(1.0);
-//    }
-//
-//    Crcl(double radius) {
-//        this.radius = radius;
-//    }
-//
-//    void display() {
-//        System.out.println("Radius: " + radius);
-//    }
-//
-//    public static void main(String[] args) {
-//        Circle c1 = new Circle();
-//        Circle c2 = new Circle(5.5);
-//        c1.equals();
-//        c2.equals();
-//    }
-//}
-//
-//
-////3. Person Class with Copy Constructor
-//class Person {
-//    String name;
-//    int age;
-//    Person(String name, int age) {
-//        this.name = name;
-//        this.age = age;
-//    }
-//    Person(Person p) {
-//        this.name = p.name;
-//        this.age = p.age;
-//    }
-//
-//    void display() {
-//        System.out.println("Name: " + name + ", Age: " + age);
-//    }
-//
-//    public static void main(String[] args) {
-//        Person p1 = new Person("John", 25);
-//        Person p2 = new Person(p1); // copy
-//        p1.display();
-//        p2.display();
-//    }
-//}
-//
-//
-////4. Hotel Booking System
-//class HotelBooking {
-//    String guestName;
-//    String roomType;
-//    int nights;
-//    HotelBooking() {
-//        guestName = "Guest";
-//        roomType = "Standard";
-//        nights = 1;
-//    }
-//    HotelBooking(String guestName, String roomType, int nights) {
-//        this.guestName = guestName;
-//        this.roomType = roomType;
-//        this.nights = nights;
-//    }
-//    HotelBooking(HotelBooking hb) {
-//        this.guestName = hb.guestName;
-//        this.roomType = hb.roomType;
-//        this.nights = hb.nights;
-//    }
-//
-//    void display() {
-//        System.out.println("Guest: " + guestName + ", Room: " + roomType + ", Nights: " + nights);
-//    }
-//
-//    public static void main(String[] args) {
-//        HotelBooking b1 = new HotelBooking();
-//        HotelBooking b2 = new HotelBooking("Alice", "Deluxe", 3);
-//        HotelBooking b3 = new HotelBooking(b2);
-//        b1.display();
-//        b2.display();
-//        b3.display();
-//    }
-//}
-//
-//
-////5. Library Book System (Borrow Method)
-//class LibraryBook {
-//    String title;
-//    String author;
-//    double price;
-//    boolean isAvailable;
-//
-//    LibraryBook(String title, String author, double price) {
-//        this.title = title;
-//        this.author = author;
-//        this.price = price;
-//        this.isAvailable = true;
-//    }
-//
-//    void borrowBook() {
-//        if (isAvailable) {
-//            isAvailable = false;
-//            System.out.println(title + " has been borrowed.");
-//        } else {
-//            System.out.println(title + " is not available.");
-//        }
-//    }
-//
-//    void display() {
-//        System.out.println("Title: " + title + ", Author: " + author + ", Available: " + isAvailable);
-//    }
-//
-//    public static void main(String[] args) {
-//        LibraryBook book = new LibraryBook("Java Basics", "James", 500);
-//        book.display();
-//        book.borrowBook();
-//        book.display();
-//    }
-//}
-//
-//
-////6. Car Rental System
-//class CarRental {
-//    String customerName;
-//    String carModel;
-//    int rentalDays;
-//    static final int DAILY_RATE = 1000;
-//
-//    CarRental(String customerName, String carModel, int rentalDays) {
-//        this.customerName = customerName;
-//        this.carModel = carModel;
-//        this.rentalDays = rentalDays;
-//    }
-//
-//    void display() {
-//        int totalCost = rentalDays * DAILY_RATE;
-//        System.out.println("Customer: " + customerName + ", Car: " + carModel +
-//                ", Days: " + rentalDays + ", Total Cost: ₹" + totalCost);
-//    }
-//
-//    public static void main(String[] args) {
-//        CarRental rental = new CarRental("Raj", "Honda City", 5);
-//        rental.display();
-//    }
-//}
-//
-//
-//
-//
-//
-////*******************************Part 2: Instance vs Class Variables and Methods******************************
-//
-//
-////Problem 1: Product Inventory
-//class Product {
-//    String productName;
-//    double price;
-//    static int totalProducts = 0;
-//
-//    Product(String productName, double price) {
-//        this.productName = productName;
-//        this.price = price;
-//        totalProducts++;
-//    }
-//
-//    void displayProductDetails() {
-//        System.out.println("Product: " + productName + ", Price: ₹" + price);
-//    }
-//
-//    static void displayTotalProducts() {
-//        System.out.println("Total Products: " + totalProducts);
-//    }
-//
-//    public static void main(String[] args) {
-//        Product p1 = new Product("Laptop", 50000);
-//        Product p2 = new Product("Phone", 20000);
-//        p1.displayProductDetails();
-//        p2.displayProductDetails();
-//        Product.displayTotalProducts();
-//    }
-//}
-//
-//
-////Problem 2: Online Course Management
-//class Course {
-//    String courseName;
-//    int duration; // in months
-//    double fee;
-//    static String instituteName = "Tech Institute";
-//
-//    Course(String courseName, int duration, double fee) {
-//        this.courseName = courseName;
-//        this.duration = duration;
-//        this.fee = fee;
-//    }
-//
-//    void displayCourseDetails() {
-//        System.out.println("Course: " + courseName + ", Duration: " + duration +
-//                " months, Fee: ₹" + fee + ", Institute: " + instituteName);
-//    }
-//
-//    static void updateInstituteName(String newName) {
-//        instituteName = newName;
-//    }
-//
-//    public static void main(String[] args) {
-//        Course c1 = new Course("Java", 3, 15000);
-//        Course c2 = new Course("Python", 2, 10000);
-//        c1.displayCourseDetails();
-//        c2.displayCourseDetails();
-//        Course.updateInstituteName("Code Academy");
-//        c1.displayCourseDetails();
-//        c2.displayCourseDetails();
-//    }
-//}
-//
-//
-////Problem 3: Vehicle Registration
-//class Vehicle {
-//    String ownerName;
-//    String vehicleType;
-//    static double registrationFee = 5000;
-//
-//    Vehicle(String ownerName, String vehicleType) {
-//        this.ownerName = ownerName;
-//        this.vehicleType = vehicleType;
-//    }
-//
-//    void displayVehicleDetails() {
-//        System.out.println("Owner: " + ownerName + ", Type: " + vehicleType +
-//                ", Registration Fee: ₹" + registrationFee);
-//    }
-//
-//    static void updateRegistrationFee(double newFee) {
-//        registrationFee = newFee;
-//    }
-//
-//    public static void main(String[] args) {
-//        Vehicle v1 = new Vehicle("Arun", "Car");
-//        Vehicle v2 = new Vehicle("Meera", "Bike");
-//        v1.displayVehicleDetails();
-//        v2.displayVehicleDetails();
-//        Vehicle.updateRegistrationFee(6000);
-//        v1.displayVehicleDetails();
-//        v2.displayVehicleDetails();
-//    }
-//}
-//
-//
-//
-////****************************Part 3: Access Modifiers (Full Implementation)************************************
-////Problem 1: University Management System
-//class Student {
-//    public int rollNumber;
-//    protected String name;
-//    private double CGPA;
-//
-//    // Constructor
-//    Student(int rollNumber, String name, double CGPA) {
-//        this.rollNumber = rollNumber;
-//        this.name = name;
-//        this.CGPA = CGPA;
-//    }
-//
-//    // Public methods to access private CGPA
-//    public double getCGPA() {
-//        return CGPA;
-//    }
-//
-//    public void setCGPA(double CGPA) {
-//        this.CGPA = CGPA;
-//    }
-//
-//    public void display() {
-//        System.out.println("Roll No: " + rollNumber + ", Name: " + name + ", CGPA: " + CGPA);
-//    }
-//}
-//
-//// Subclass to show protected access
-//class PostgraduateStudent extends Student {
-//    String thesisTopic;
-//
-//    PostgraduateStudent(int rollNumber, String name, double CGPA, String thesisTopic) {
-//        super(rollNumber, name, CGPA);
-//        this.thesisTopic = thesisTopic;
-//    }
-//
-//    public void displayPGDetails() {
-//        System.out.println("PG Student: Roll No: " + rollNumber + ", Name: " + name +
-//                ", Thesis Topic: " + thesisTopic);
-//    }
-//
-//    public static void main(String[] args) {
-//        Student s1 = new Student(101, "Amit", 8.5);
-//        s1.display();
-//        s1.setCGPA(9.0);
-//        System.out.println("Updated CGPA: " + s1.getCGPA());
-//
-//        PostgraduateStudent pg = new PostgraduateStudent(102, "Riya", 9.2, "AI in Education");
-//        pg.displayPGDetails();
-//    }
-//}
-//
-//
-////Problem 2: Book Library System
-//class Book1 {
-//    public String ISBN;
-//    protected String title;
-//    private String author;
-//
-//    Book1(String ISBN, String title, String author) {
-//        this.ISBN = ISBN;
-//        this.title = title;
-//        this.author = author;
-//    }
-//
-//    // Methods for author
-//    public String getAuthor() {
-//        return author;
-//    }
-//
-//    public void setAuthor(String author) {
-//        this.author = author;
-//    }
-//
-//    public void display() {
-//        System.out.println("ISBN: " + ISBN + ", Title: " + title + ", Author: " + author);
-//    }
-//}
-//
-//// Subclass
-//class EBook extends Book {
-//    double fileSize;
-//    private String ISBN;
-//
-//    EBook(String ISBN, String title, String author, double fileSize) {
-//        super(ISBN, title, Double.parseDouble(author));
-//        this.fileSize = fileSize;
-//    }
-//
-//    public void displayEBook() {
-//        // Access public ISBN and protected title
-//        System.out.println("EBook - ISBN: " + ISBN + ", Title: " + title + ", File Size: " + fileSize + "MB");
-//    }
-//
-//    public static void main(String[] args) {
-//        Book1 book = new Book("12345", "Java Programming", "James Gosling");
-//        book.display();
-//        book.setAuthor("Oracle");
-//        System.out.println("Updated Author: " + book.getAuthor());
-//
-//        EBook ebook = new EBook("67890", "Python Guide", "Guido van Rossum", 5.2);
-//        ebook.displayEBook();
-//    }
-//}
-//
-//
-////Problem 3: Bank Account Management
-//class BankAcc {
-//    public String accountNumber;
-//    protected String accountHolder;
-//    private double balance;
-//
-//    BankAcc(String accountNumber, String accountHolder, double balance) {
-//        this.accountNumber = accountNumber;
-//        this.accountHolder = accountHolder;
-//        this.balance = balance;
-//    }
-//
-//    // Public methods for balance
-//    public double getBalance() {
-//        return balance;
-//    }
-//
-//    public void deposit(double amount) {
-//        balance += amount;
-//        System.out.println("Deposited ₹" + amount + ". New Balance: ₹" + balance);
-//    }
-//
-//    public void withdraw(double amount) {
-//        if (amount <= balance) {
-//            balance -= amount;
-//            System.out.println("Withdrew ₹" + amount + ". Remaining Balance: ₹" + balance);
-//        } else {
-//            System.out.println("Insufficient balance.");
-//        }
-//    }
-//
-//    public void display() {
-//        System.out.println("Account Number: " + accountNumber + ", Account Holder: " + accountHolder);
-//    }
-//}
-//
-//// Subclass
-//class SavingsAccount extends BankAccount {
-//    double interestRate;
-//
-//    SavingsAccount(String accountNumber, String accountHolder, double balance, double interestRate) {
-//        super(accountNumber, accountHolder, balance);
-//        this.interestRate = interestRate;
-//    }
-//
-//    public void displaySavingsAccount() {
-//        System.out.println("Savings Account - Account Number: " + accountNumber +
-//                ", Holder: " + accountHolder + ", Interest Rate: " + interestRate + "%");
-//    }
-//
-//    public static void main(String[] args) {
-//        BankAccount acc = new BankAccount("1111", "Amit", 5000);
-//        acc.display();
-//        acc.deposit(2000);
-//        acc.withdraw(1000);
-//
-//        SavingsAccount sAcc = new SavingsAccount("2222", "Riya", 8000, 4.5);
-//        sAcc.displaySavingsAccount();
-//    }
-//}
-//
-////Problem 4: Employee Records
-//class Employee {
-//    public int employeeID;
-//    protected String department;
-//    private double salary;
-//
-//    Employee(int employeeID, String department, double salary) {
-//        this.employeeID = employeeID;
-//        this.department = department;
-//        this.salary = salary;
-//    }
-//
-//    public void setSalary(double salary) {
-//        this.salary = salary;
-//        System.out.println("Updated Salary: ₹" + this.salary);
-//    }
-//
-//    public double getSalary() {
-//        return salary;
-//    }
-//
-//    public void display() {
-//        System.out.println("Employee ID: " + employeeID + ", Department: " + department + ", Salary: ₹" + salary);
-//    }
-//}
-//
-//// Subclass
-//class Manager extends Employee {
-//    String teamName;
-//
-//    Manager(int employeeID, String department, double salary, String teamName) {
-//        super(employeeID, department, salary);
-//        this.teamName = teamName;
-//    }
-//
-//    public void displayManager() {
-//        // Accessing public and protected members
-//        System.out.println("Manager - ID: " + employeeID + ", Department: " + department + ", Team: " + teamName);
-//    }
-//
-//    public static void main(String[] args) {
-//        Employee emp = new Employee(101, "HR", 30000);
-//        emp.display();
-//        emp.setSalary(35000);
-//
-//        Manager mgr = new Manager(201, "IT", 70000, "Development");
-//        mgr.displayManager();
-//    }
-//}
+////***************************** Level 1 Practice Programs ****************************************
+
+//1. Program to Display Worker Details
+class Worker {
+    String workerName;
+    int workerId;
+    double wage;
+
+    Worker(String wName, int wId, double wWage) {
+        this.workerName = wName;
+        this.workerId = wId;
+        this.wage = wWage;
+    }
+
+    public void showWorkerInfo() {
+        System.out.println("Worker Name: " + workerName);
+        System.out.println("Worker ID: " + workerId);
+        System.out.println("Worker Wage: " + wage);
+    }
+
+    public static void main(String[] args) {
+        Worker emp = new Worker("Raghav", 101, 45000);
+        emp.showWorkerInfo();
+    }
+}
+
+
+//2. Program to Compute Area of a Disk
+class Disk {
+    double radius;
+
+    Disk(double r) {
+        this.radius = r;
+    }
+
+    public void printArea() {
+        System.out.printf("Disk Area: %.4f", (Math.PI * radius * radius));
+    }
+
+    public void printPerimeter() {
+        System.out.printf("\nDisk Circumference: %.4f", (2 * Math.PI * radius));
+    }
+
+    public static void main(String[] args) {
+        Disk d = new Disk(3.2);
+        d.printArea();
+        d.printPerimeter();
+    }
+}
+
+
+//3. Program to Handle Novel Details
+class Novel {
+    String novelName;
+    String writer;
+    double cost;
+
+    Novel(String name, String writer, double price) {
+        this.novelName = name;
+        this.writer = writer;
+        this.cost = price;
+    }
+
+    public void printNovelInfo() {
+        System.out.println("Novel: " + novelName);
+        System.out.println("Writer: " + writer);
+        System.out.println("Cost: " + cost);
+    }
+
+    public static void main(String[] args) {
+        Novel n1 = new Novel("The Alchemist", "Paulo Coelho", 400);
+        Novel n2 = new Novel("Half Girlfriend", "Chetan Bhagat", 350);
+        n1.printNovelInfo();
+        n2.printNovelInfo();
+    }
+}
+
+
+//4. Program to Track Products
+class ProductStock {
+    String[] codes;
+    String[] names;
+    double[] costs;
+
+    ProductStock(String[] names, String[] codes, double[] costs) {
+        this.codes = codes;
+        this.names = names;
+        this.costs = costs;
+    }
+
+    public void printProduct(int index) {
+        System.out.println("Code: " + codes[index]);
+        System.out.println("Name: " + names[index]);
+        System.out.println("Cost: " + costs[index]);
+        System.out.println("------------------");
+    }
+
+    public static void main(String[] args) {
+        String[] n = {"Pen", "Notebook", "Bag"};
+        String[] c = {"P01", "N02", "B03"};
+        double[] p = {10, 50, 800};
+        ProductStock stock = new ProductStock(n, c, p);
+
+        for (int i = 0; i < p.length; i++) {
+            stock.printProduct(i);
+        }
+    }
+}
+
+
+//5. Program to Handle Smartphone Details
+class Smartphone {
+    String brand;
+    String modelName;
+    double cost;
+
+    Smartphone(String b, String m, double c) {
+        this.brand = b;
+        this.modelName = m;
+        this.cost = c;
+    }
+
+    public void showPhone() {
+        System.out.println("Brand: " + brand);
+        System.out.println("Model: " + modelName);
+        System.out.println("Cost: " + cost);
+        System.out.println("----------------------");
+    }
+
+    public static void main(String[] args) {
+        Smartphone p1 = new Smartphone("Samsung", "Galaxy S23", 75000);
+        Smartphone p2 = new Smartphone("Xiaomi", "Redmi Note 13", 15000);
+        Smartphone p3 = new Smartphone("Apple", "iPhone 15", 120000);
+
+        p1.showPhone();
+        p2.showPhone();
+        p3.showPhone();
+    }
+}
+
+
+
+////***************************** Level 2 Practice Programs ****************************************
+
+//1. Program to Simulate Report Card
+class ReportCard {
+    String studentName;
+    String rollNo;
+    double[] subjectMarks;
+
+    ReportCard(String name, String roll, double[] marks) {
+        this.studentName = name;
+        this.rollNo = roll;
+        this.subjectMarks = marks;
+    }
+
+    public String assignGrade(double[] marks) {
+        double avg = computeAverage(marks);
+        if (avg >= 80) return "Grade A";
+        else if (avg >= 60) return "Grade B";
+        else if (avg >= 50) return "Grade C";
+        else if (avg >= 40) return "Grade D";
+        else return "Grade F";
+    }
+
+    public void showStudentReport() {
+        System.out.println("Name: " + studentName);
+        System.out.println("Roll No: " + rollNo);
+        for (int i = 0; i < subjectMarks.length; i++) {
+            System.out.println("Subject " + (i + 1) + ": " + subjectMarks[i]);
+        }
+        System.out.println(assignGrade(subjectMarks));
+    }
+
+    private double computeAverage(double[] marks) {
+        double sum = 0;
+        for (double m : marks) sum += m;
+        return sum / marks.length;
+    }
+
+    public static void main(String[] args) {
+        double[] m1 = {85, 90, 80};
+        double[] m2 = {55, 60, 65};
+        ReportCard s1 = new ReportCard("Arjun", "CSE101", m1);
+        ReportCard s2 = new ReportCard("Meera", "ECE102", m2);
+        s1.showStudentReport();
+        s2.showStudentReport();
+    }
+}
+
+
+//2. Program to Simulate ATM
+class Account {
+    private String holder;
+    private String accNumber;
+    private double balance;
+
+    public Account(String h, String acc, double bal) {
+        this.holder = h;
+        this.accNumber = acc;
+        this.balance = bal;
+    }
+
+    public static void showBankHeader() {
+        System.out.println("\tWelcome to National Bank\t");
+    }
+
+    public void depositMoney(double amt) {
+        if (amt > 0) {
+            balance += amt;
+            System.out.println("Deposited: " + amt);
+        }
+    }
+
+    public void withdrawMoney(double amt) {
+        if (amt > 0 && amt <= balance) {
+            balance -= amt;
+            System.out.println("Withdrawn: " + amt);
+        } else {
+            System.out.println("Invalid or insufficient funds");
+        }
+    }
+
+    public void showBalance() {
+        System.out.println("Balance: " + balance);
+    }
+
+    public static void main(String[] args) {
+        Account acc = new Account("Kiran", "AC1234", 1000);
+        showBankHeader();
+        acc.showBalance();
+        acc.depositMoney(500);
+        acc.showBalance();
+        acc.withdrawMoney(400);
+        acc.showBalance();
+        acc.withdrawMoney(2000);
+    }
+}
+
+
+//3. Program to Check Palindrome
+class MirrorWord {
+    String input;
+
+    MirrorWord(String txt) {
+        this.input = txt;
+    }
+
+    public boolean checkMirror() {
+        String clean = input.replaceAll("\\s", "").toLowerCase();
+        String rev = new StringBuilder(clean).reverse().toString();
+        return clean.equals(rev);
+    }
+
+    public void showResult() {
+        if (checkMirror()) System.out.println(input + " is a Palindrome");
+        else System.out.println(input + " is not a Palindrome");
+    }
+
+    public static void main(String[] args) {
+        MirrorWord m1 = new MirrorWord("Madam");
+        MirrorWord m2 = new MirrorWord("Hello");
+        m1.showResult();
+        m2.showResult();
+    }
+}
+
+
+//4. Program to Model Movie Booking
+class CinemaTicket {
+    private String film;
+    private String seat;
+    private double rate;
+    private boolean booked;
+
+    CinemaTicket(String film) {
+        this.film = film;
+        this.seat = "None";
+        this.rate = 0.0;
+        this.booked = false;
+    }
+
+    public void reserveTicket(String seatNo, double price) {
+        if (booked) {
+            System.out.println("Already booked!");
+        } else {
+            this.seat = seatNo;
+            this.rate = price;
+            this.booked = true;
+            System.out.println("Booked for: " + film + " Seat: " + seat + " Price: " + rate);
+        }
+    }
+
+    public void showTicket() {
+        if (booked) {
+            System.out.println("Ticket confirmed: " + film + ", Seat: " + seat + ", Price: " + rate);
+        } else {
+            System.out.println("Not booked yet.");
+        }
+    }
+
+    public static void main(String[] args) {
+        CinemaTicket t = new CinemaTicket("Avatar");
+        t.showTicket();
+        t.reserveTicket("B12", 250);
+        t.reserveTicket("C10", 250);
+        t.showTicket();
+    }
+}
+
+
+//5. Program to Simulate Shopping Cart
+class BasketItem {
+    private String item;
+    private double unitCost;
+    private int qty;
+
+    public BasketItem(String item, double cost, int q) {
+        this.item = item;
+        this.unitCost = cost;
+        this.qty = q;
+    }
+
+    public void addQuantity(int add) {
+        this.qty += add;
+        System.out.println("Added " + add + " " + item);
+    }
+
+    public void reduceQuantity(int rem) {
+        if (rem > qty) {
+            System.out.println("Not enough items to remove");
+        } else {
+            this.qty -= rem;
+            System.out.println("Removed " + rem + " " + item);
+        }
+    }
+
+    public double calcTotal() {
+        return unitCost * qty;
+    }
+
+    public void showItem() {
+        System.out.println("Item: " + item + ", Cost: " + unitCost + ", Qty: " + qty);
+    }
+
+    public static void main(String[] args) {
+        BasketItem b = new BasketItem("Headphones", 2000, 1);
+        b.showItem();
+        b.addQuantity(2);
+        b.reduceQuantity(1);
+        System.out.println("Total: " + b.calcTotal());
+    }
+}
